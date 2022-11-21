@@ -2,19 +2,19 @@ package com.example.ve16i04001
 
 import android.app.Application
 import androidx.room.Room
-import com.example.ve16i04001.database.Database
+import com.example.ve16i04001.database.UsuarioDatabase
 
 class UsuarioApplication : Application() {
 
     companion object {
-        lateinit var database: Database
+        lateinit var database: UsuarioDatabase
     }
 
     override fun onCreate() {
         super.onCreate()
         database = Room.databaseBuilder(
             this,
-            Database::class.java,
+            UsuarioDatabase::class.java,
             "UsuarioDB"
         )
             .allowMainThreadQueries()

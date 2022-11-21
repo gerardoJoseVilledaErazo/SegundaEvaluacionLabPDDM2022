@@ -10,7 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ve16i04001.R
 import com.example.ve16i04001.databinding.ItemUsuarioBinding
-import com.example.ve16i04001.model.UsuarioEntity
+import com.example.ve16i04001.Models.UsuarioEntity
 
 class UsuarioAdapter(
     private var lstUsuarios: MutableList<UsuarioEntity>, private var context: Context
