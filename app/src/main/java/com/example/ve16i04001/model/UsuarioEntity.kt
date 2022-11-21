@@ -10,5 +10,5 @@ class UsuarioEntity(
     @ColumnInfo(name = "id") val id: Long = 0,
     @ColumnInfo(name = "nickname") private var nickname: String,
     @ColumnInfo(name = "puntaje") private var puntaje: String,
-    @ColumnInfo(name = "imagen") private var imagen: String
+    @ColumnInfo(name = "imagen") private var imagen: String = "https://cursokotlin.com/wp-content/uploads/2017/07/spiderman.jpg"
 )
