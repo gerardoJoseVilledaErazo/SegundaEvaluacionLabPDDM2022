@@ -12,6 +12,7 @@ import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import com.example.ve16i04001.databinding.ActivityIniciarJuegoBinding
+import com.example.ve16i04001.model.UsuarioEntity
 import com.google.android.material.snackbar.Snackbar
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
@@ -157,21 +158,17 @@ class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
                         numeroIntentos += 1
                         binding.layoutIniciarJuego.txtAttempts.text =
                             "Numero de intentos: $numeroIntentos"
-                        /*doAsync {
-                            BibliotecaApplication.database.libroDao().addLibro(
-                                LibroEntity(
-                                    codigo = binding.layoutRegistrarPublicacion.edtCodigo.text.toString()
-                                        .toInt(),
-                                    titulo = binding.layoutRegistrarPublicacion.edtTitulo.text.toString(),
-                                    anioPublicacion = binding.layoutRegistrarPublicacion.edtAnioPublicacion.text.toString()
-                                        .toInt()
+                        doAsync {
+                            UsuarioApplication.database.getUsuarioDao().addUsuario(
+                                UsuarioEntity(
+                                    nickname = nickname,
+                                    puntaje = numeroIntentos.toString()
                                 )
                             )
                             uiThread {
-//                                finish()
                                 goToMainActivity()
                             }
-                        }*/
+                        }
                     }
                 } else if (dificultad == 2) {
 //
@@ -209,23 +206,17 @@ class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
                         numeroIntentos += 1
                         binding.layoutIniciarJuego.txtAttempts.text =
                             "Numero de intentos: $numeroIntentos"
-                        /*doAsync {
-                            BibliotecaApplication.database.revistaDao().addRevista(
-                                RevistaEntity(
-                                    codigo = binding.layoutRegistrarPublicacion.edtCodigo.text.toString()
-                                        .toInt(),
-                                    titulo = binding.layoutRegistrarPublicacion.edtTitulo.text.toString(),
-                                    anioPublicacion = binding.layoutRegistrarPublicacion.edtAnioPublicacion.text.toString()
-                                        .toInt(),
-                                    numeroRev = binding.layoutRegistrarPublicacion.edtNumeroRevista.text.toString()
-                                        .toInt()
+                        doAsync {
+                            UsuarioApplication.database.getUsuarioDao().addUsuario(
+                                UsuarioEntity(
+                                    nickname = nickname,
+                                    puntaje = numeroIntentos.toString()
                                 )
                             )
                             uiThread {
-//                                finish()
                                 goToMainActivity()
                             }
-                        }*/
+                        }
                     }
                 } else if (dificultad == 3) {
 //
@@ -263,23 +254,17 @@ class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
                         numeroIntentos += 1
                         binding.layoutIniciarJuego.txtAttempts.text =
                             "Numero de intentos: $numeroIntentos"
-                        /*doAsync {
-                            BibliotecaApplication.database.revistaDao().addRevista(
-                                RevistaEntity(
-                                    codigo = binding.layoutRegistrarPublicacion.edtCodigo.text.toString()
-                                        .toInt(),
-                                    titulo = binding.layoutRegistrarPublicacion.edtTitulo.text.toString(),
-                                    anioPublicacion = binding.layoutRegistrarPublicacion.edtAnioPublicacion.text.toString()
-                                        .toInt(),
-                                    numeroRev = binding.layoutRegistrarPublicacion.edtNumeroRevista.text.toString()
-                                        .toInt()
+                        doAsync {
+                            UsuarioApplication.database.getUsuarioDao().addUsuario(
+                                UsuarioEntity(
+                                    nickname = nickname,
+                                    puntaje = numeroIntentos.toString()
                                 )
                             )
                             uiThread {
-//                                finish()
                                 goToMainActivity()
                             }
-                        }*/
+                        }
                     }
                 }
             }
