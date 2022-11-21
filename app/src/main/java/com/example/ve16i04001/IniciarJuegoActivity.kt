@@ -25,6 +25,10 @@ class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
     private var miRespuesta: Int = 0
     private var respuestaCorrecta: Int = 0
 
+    //    private lateinit var miRespuesta: Integer
+//    private lateinit var respuestaCorrecta: Integer
+    private lateinit var valor: String
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +44,7 @@ class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
         dificultad = intent.extras!!.getInt("dificultad")
         nickname = intent.extras!!.getString("nickname").toString()
 
+//        respuestaCorrecta = Integer.parseInt(intent.extras!!.getInt("respuestaCorrecta").toString())
         respuestaCorrecta = intent.extras!!.getInt("respuestaCorrecta")
 
         binding.layoutIniciarJuego.txtAttempts.text = "Numero de intentos: $numeroIntentos"
@@ -50,10 +55,6 @@ class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
 
         if (dificultad == 1) {
             // En este caso la dificultad es Facil
-
-//            val valor: String = binding.layoutIniciarJuego.edtFacil.text.toString()
-//            miRespuesta = Integer.parseInt(valor)
-
             binding.layoutIniciarJuego.txtDificultad.text = "Dificultad: Facil"
             binding.layoutIniciarJuego.tilMedio.visibility = View.GONE
             binding.layoutIniciarJuego.tilDificil.visibility = View.GONE
@@ -61,10 +62,6 @@ class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
 
         if (dificultad == 2) {
             // En este caso la dificultad es Medio
-
-//            val valor: String = binding.layoutIniciarJuego.edtMedio.text.toString()
-//            miRespuesta = Integer.parseInt(valor)
-
             binding.layoutIniciarJuego.txtDificultad.text = "Dificultad: Medio"
             binding.layoutIniciarJuego.tilFacil.visibility = View.GONE
             binding.layoutIniciarJuego.tilDificil.visibility = View.GONE
@@ -72,10 +69,6 @@ class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
 
         if (dificultad == 3) {
             // En este caso la dificultad es Dificil
-
-//            val valor: String = binding.layoutIniciarJuego.edtDificil.text.toString()
-//            miRespuesta = Integer.parseInt(valor)
-
             binding.layoutIniciarJuego.txtDificultad.text = "Dificultad: Dificil"
             binding.layoutIniciarJuego.tilMedio.visibility = View.GONE
             binding.layoutIniciarJuego.tilFacil.visibility = View.GONE
@@ -122,6 +115,8 @@ class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
                 if (dificultad == 1) {
                     // Facil
                     if (verifyEmpty(binding.layoutIniciarJuego.edtFacil)) {
+                        miRespuesta =
+                            Integer.parseInt(binding.layoutIniciarJuego.edtFacil.text.toString())
                         if (miRespuesta == respuestaCorrecta) {
                             /// Snackbar
                             Snackbar.make(
@@ -170,6 +165,8 @@ class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
                 } else if (dificultad == 2) {
 //
                     if (verifyEmpty(binding.layoutIniciarJuego.edtMedio)) {
+                        miRespuesta =
+                            Integer.parseInt(binding.layoutIniciarJuego.edtMedio.text.toString())
                         if (miRespuesta == respuestaCorrecta) {
                             /// Snackbar
                             Snackbar.make(
@@ -218,6 +215,8 @@ class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
                 } else if (dificultad == 3) {
 //
                     if (verifyEmpty(binding.layoutIniciarJuego.edtDificil)) {
+                        miRespuesta =
+                            Integer.parseInt(binding.layoutIniciarJuego.edtDificil.text.toString())
                         if (miRespuesta == respuestaCorrecta) {
                             /// Snackbar
                             Snackbar.make(
