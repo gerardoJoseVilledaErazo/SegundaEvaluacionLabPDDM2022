@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/margin_default">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_default">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txvTituloRegistrar"
+            style="?attr/textAppearanceHeadline5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/registrar_nickname"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_size_default"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilNickname"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:hint="@string/registre_su_nickname"
+            app:counterEnabled="true"
+            app:counterMaxLength="50"
+            app:endIconMode="clear_text"
+            app:helperText="@string/helper_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txvTituloRegistrar">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtNickname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionDone"
+                android:maxLength="50"
+                android:maxLines="1"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txvTitulo"
+            style="?attr/textAppearanceBody2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/seleccionar_dificultad"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_size_default"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tilNickname" />
+
+        <RadioGroup
+            android:id="@+id/rgDificultad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txvTitulo"
+            app:layout_constraintVertical_bias="0.1">
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbtFacil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/f_cil"
+                android:textSize="@dimen/text_size_default" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbtMedio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medio"
+                android:textSize="@dimen/text_size_default" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbtDificil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dif_cil"
+                android:textSize="@dimen/text_size_default" />
+        </RadioGroup>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSiguiente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/siguiente"
+            android:textAllCaps="false"
+            android:textSize="@dimen/text_size_default"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/rgDificultad"
+            app:layout_constraintStart_toStartOf="@id/rgDificultad"
+            app:layout_constraintTop_toBottomOf="@id/rgDificultad"
+            app:layout_constraintVertical_bias="0.1" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

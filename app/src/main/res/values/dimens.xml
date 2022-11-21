@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding">64dp</dimen>
+    <dimen name="textSize_button">18sp</dimen>
+    <dimen name="marginTop_default">50dp</dimen>
+    <dimen name="margin_default">16dp</dimen>
+    <dimen name="top_default">16dp</dimen>
+    <dimen name="text_size_default">18sp</dimen>
+</resources>

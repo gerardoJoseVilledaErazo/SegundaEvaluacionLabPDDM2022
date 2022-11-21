@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">VE16I04001</string>
+
+    <!--pantalla principal-->
+    <string name="msgDerechosReservados">Todos los Derechos Reservados ® 2022</string>
+    <string name="tvVersion">V 1.0.0</string>
+
+    <!-- Datos Alumno Activity-->
+    <string name="DevBy">Desarrollado por:</string>
+    <string name="Name">Nombre:</string>
+    <string name="MyName">Gerardo José Villeda Erazo</string>
+    <string name="Code">Código:</string>
+    <string name="MyCode">VE16-I04-001</string>
+    <string name="Dev">Developer</string>
+    <string name="seleccione_la_dificultad">Seleccione la dificultad</string>
+    <string name="siguiente">Siguiente</string>
+    <string name="dif_cil">Difícil</string>
+    <string name="medio">Medio</string>
+    <string name="f_cil">Fácil</string>
+    <string name="registrar_nickname">Registrar Nickname</string>
+    <string name="helper_text">Obligatorio</string>
+    <string name="registre_su_nickname">Registre su nickname</string>
+    <string name="seleccionar_dificultad">Seleccionar dificultad</string>
+    <string name="seleccionar_opcion">Debe seleccionar una opcion</string>
+    <string name="msg_dialog">Guardando... por favor espere</string>
+    <string name="adivina_el_numero">Adivina el numero</string>
+    <string name="hecho">Hecho</string>
+    <string name="registre_su_nickname_primero_en_configuraciones">Registre su nickname en el boton de Configuraciones para Iniciar Juego</string>
+    <string name="respuesta_correcta">Felicidades! Usted ha ganado</string>
+    <string name="numero_es_mayor">El numero correcto es mayor</string>
+    <string name="numero_es_menor">El numero correcto es menor</string>
+
+</resources>
