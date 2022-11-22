@@ -12,7 +12,7 @@ interface UsuarioDao {
     @Insert
     fun addUsuario(usuarioEntity: UsuarioEntity)
 
-    @Query("SELECT * FROM UsuarioEntity ORDER BY puntaje ASC")
+    @Query("SELECT * FROM UsuarioEntity ORDER BY puntaje ASC LIMIT 3")
     fun getAllUsuariosByPuntaje(): List<UsuarioEntity>
 
     @Query("DELETE FROM UsuarioEntity")
