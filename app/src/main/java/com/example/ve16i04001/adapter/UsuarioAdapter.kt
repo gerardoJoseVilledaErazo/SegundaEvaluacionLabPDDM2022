@@ -58,12 +58,12 @@ class UsuarioAdapter(
             binding.tvPuntaje.text = item.getPuntaje()
             Glide.with(binding.ivUsuario.context).load(item.getImagen())
                 .into(binding.ivUsuario)
-            binding.btnDelete.setOnClickListener {
-//                eliminar(position)
-                UsuarioApplication.database.getUsuarioDao().delete(item)
-//                updateState(position)
-                notifyDataSetChanged()
-            }
+//            binding.btnDelete.setOnClickListener {
+////                eliminar(position)
+//                UsuarioApplication.database.getUsuarioDao().delete(item)
+////                updateState(position)
+//                notifyDataSetChanged()
+//            }
 
         }
     }

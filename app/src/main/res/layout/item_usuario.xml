@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
     android:layout_marginVertical="8dp">
 
@@ -42,7 +42,7 @@
             app:layout_constraintStart_toEndOf="@id/ivUsuario"
             app:layout_constraintTop_toBottomOf="@+id/tvNickame" />
 
-<!--        <TextView-->
+        <!--        <TextView-->
         <!--            android:id="@+id/tvDificultad"-->
         <!--            android:layout_width="wrap_content"-->
         <!--            android:layout_height="wrap_content"-->
@@ -52,20 +52,20 @@
         <!--            app:layout_constraintBottom_toBottomOf="parent"-->
         <!--            app:layout_constraintEnd_toEndOf="parent" />-->
 
-        <Button
-            android:id="@+id/btnDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/design_default_color_error"
-            android:text="Borrar"
-            android:textAllCaps="false"
-            android:textSize="21sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivUsuario"
-            app:layout_constraintTop_toBottomOf="@id/tvPuntaje"
-            app:layout_constraintVertical_bias="0.5" />
+<!--        <Button-->
+<!--            android:id="@+id/btnDelete"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:backgroundTint="@color/design_default_color_error"-->
+<!--            android:text="Borrar"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:textSize="21sp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toEndOf="@id/ivUsuario"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/tvPuntaje"-->
+<!--            app:layout_constraintVertical_bias="0.5" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

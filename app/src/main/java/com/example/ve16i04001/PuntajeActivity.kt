@@ -66,17 +66,6 @@ class PuntajeActivity : AppCompatActivity(), IOnClickListener {
 //        }
     }
 
-//    private fun configGlide() {
-//        val url =
-//            "https://yt3.ggpht.com/ytc/AMLnZu9-hbX2bZLgbBKPQ9P1sSg9U0wL44dmcHLcSX5BvQ=s900-c-k-c0x00ffffff-no-rj"
-//        Glide.with(this)
-//            .load(url)
-//            .diskCacheStrategy(DiskCacheStrategy.ALL)
-//            .centerCrop()
-//            .circleCrop()
-//            .into(binding.)
-//    }
-
     private fun configSwipe() {
         binding.refreshLayout.setColorSchemeResources(R.color.teal_700, R.color.purple_200)
         binding.refreshLayout.setProgressBackgroundColorSchemeColor(
