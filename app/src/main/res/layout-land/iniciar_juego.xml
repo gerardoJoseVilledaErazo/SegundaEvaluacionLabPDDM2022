@@ -17,11 +17,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintVertical_bias="0.01" />
 
     <TextView
         android:id="@+id/txtUser"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Nickname"
         android:textAlignment="textStart"
@@ -31,20 +31,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtGuessTheNumber"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintVertical_bias="0.01" />
 
     <TextView
         android:id="@+id/txtDificultad"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
         android:text="Dificulad"
         android:textAlignment="textStart"
         android:textColor="@color/purple_500"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtUser"
+        app:layout_constraintStart_toEndOf="@id/txtUser"
+        app:layout_constraintTop_toBottomOf="@+id/txtGuessTheNumber"
         app:layout_constraintVertical_bias="0.05" />
 
     <TextView
@@ -74,7 +74,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAttempts"
-        app:layout_constraintVertical_bias="0.10">
+        app:layout_constraintVertical_bias="0.05">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtFacil"
@@ -101,7 +101,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilFacil"
-        app:layout_constraintVertical_bias="0.10">
+        app:layout_constraintVertical_bias="0.05">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtMedio"
@@ -128,7 +128,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilMedio"
-        app:layout_constraintVertical_bias="0.10">
+        app:layout_constraintVertical_bias="0.05">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtDificil"
@@ -152,6 +152,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tilDificil"
-        app:layout_constraintVertical_bias="0.10" />
+        app:layout_constraintVertical_bias="0.05" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
