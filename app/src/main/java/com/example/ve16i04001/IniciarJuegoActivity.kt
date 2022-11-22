@@ -11,8 +11,11 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
+import com.example.ve16i04001.Models.UsuarioEntity
 import com.example.ve16i04001.databinding.ActivityIniciarJuegoBinding
 import com.google.android.material.snackbar.Snackbar
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 
 class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -118,6 +121,18 @@ class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
                         miRespuesta =
                             Integer.parseInt(binding.layoutIniciarJuego.edtFacil.text.toString())
                         if (miRespuesta == respuestaCorrecta) {
+                            doAsync {
+                                UsuarioApplication.database.getUsuarioDao().addUsuario(
+                                    UsuarioEntity(
+                                        nickname = nickname,
+                                        puntaje = numeroIntentos.toString(),
+                                        imagen = "https://cursokotlin.com/wp-content/uploads/2017/07/spiderman.jpg"
+                                    )
+                                )
+                                uiThread {
+                                    goToMainActivity()
+                                }
+                            }
                             /// Snackbar
                             Snackbar.make(
                                 binding.root, R.string.respuesta_correcta,
@@ -150,17 +165,6 @@ class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
                         numeroIntentos += 1
                         binding.layoutIniciarJuego.txtAttempts.text =
                             "Numero de intentos: $numeroIntentos"
-//                        doAsync {
-//                            UsuarioApplication.database.getUsuarioDao().addUsuario(
-//                                UsuarioEntity(
-//                                    nickname = nickname,
-//                                    puntaje = numeroIntentos.toString()
-//                                )
-//                            )
-//                            uiThread {
-//                                goToMainActivity()
-//                            }
-//                        }
                     }
                 } else if (dificultad == 2) {
 //
@@ -168,6 +172,18 @@ class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
                         miRespuesta =
                             Integer.parseInt(binding.layoutIniciarJuego.edtMedio.text.toString())
                         if (miRespuesta == respuestaCorrecta) {
+                            doAsync {
+                                UsuarioApplication.database.getUsuarioDao().addUsuario(
+                                    UsuarioEntity(
+                                        nickname = nickname,
+                                        puntaje = numeroIntentos.toString(),
+                                        imagen = "https://cursokotlin.com/wp-content/uploads/2017/07/spiderman.jpg"
+                                    )
+                                )
+                                uiThread {
+                                    goToMainActivity()
+                                }
+                            }
                             /// Snackbar
                             Snackbar.make(
                                 binding.root, R.string.respuesta_correcta,
@@ -200,17 +216,6 @@ class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
                         numeroIntentos += 1
                         binding.layoutIniciarJuego.txtAttempts.text =
                             "Numero de intentos: $numeroIntentos"
-//                        doAsync {
-//                            UsuarioApplication.database.getUsuarioDao().addUsuario(
-//                                UsuarioEntity(
-//                                    nickname = nickname,
-//                                    puntaje = numeroIntentos.toString()
-//                                )
-//                            )
-//                            uiThread {
-//                                goToMainActivity()
-//                            }
-//                        }
                     }
                 } else if (dificultad == 3) {
 //
@@ -218,6 +223,18 @@ class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
                         miRespuesta =
                             Integer.parseInt(binding.layoutIniciarJuego.edtDificil.text.toString())
                         if (miRespuesta == respuestaCorrecta) {
+                            doAsync {
+                                UsuarioApplication.database.getUsuarioDao().addUsuario(
+                                    UsuarioEntity(
+                                        nickname = nickname,
+                                        puntaje = numeroIntentos.toString(),
+                                        imagen = "https://cursokotlin.com/wp-content/uploads/2017/07/spiderman.jpg"
+                                    )
+                                )
+                                uiThread {
+                                    goToMainActivity()
+                                }
+                            }
                             /// Snackbar
                             Snackbar.make(
                                 binding.root, R.string.respuesta_correcta,
@@ -250,17 +267,6 @@ class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
                         numeroIntentos += 1
                         binding.layoutIniciarJuego.txtAttempts.text =
                             "Numero de intentos: $numeroIntentos"
-//                        doAsync {
-//                            UsuarioApplication.database.getUsuarioDao().addUsuario(
-//                                UsuarioEntity(
-//                                    nickname = nickname,
-//                                    puntaje = numeroIntentos.toString()
-//                                )
-//                            )
-//                            uiThread {
-//                                goToMainActivity()
-//                            }
-//                        }
                     }
                 }
             }

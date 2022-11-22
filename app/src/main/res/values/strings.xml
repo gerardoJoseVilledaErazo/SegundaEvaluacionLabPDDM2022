@@ -29,5 +29,7 @@
     <string name="respuesta_correcta">Felicidades! Usted ha ganado</string>
     <string name="numero_es_mayor">El numero correcto es mayor</string>
     <string name="numero_es_menor">El numero correcto es menor</string>
+    <string name="titulo_eliminar">Eliminar</string>
+    <string name="msg_eliminar">Realmente desea eliminar?</string>
 
 </resources>

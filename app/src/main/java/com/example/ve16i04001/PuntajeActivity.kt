@@ -9,13 +9,21 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.example.ve16i04001.Models.Interfaces.IOnClickListener
+import com.example.ve16i04001.Models.UsuarioEntity
+import com.example.ve16i04001.UsuarioApplication.Companion.database
 import com.example.ve16i04001.adapter.UsuarioAdapter
 import com.example.ve16i04001.databinding.ActivityPuntajeBinding
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 
-class PuntajeActivity : AppCompatActivity() {
+class PuntajeActivity : AppCompatActivity(), IOnClickListener {
 
     // Se agrega variable para manejar viewBinding
     private lateinit var binding: ActivityPuntajeBinding
@@ -46,6 +54,8 @@ class PuntajeActivity : AppCompatActivity() {
             this
         )
 
+        getUsuarios()
+
         binding.rcUsuarios.setHasFixedSize(true)
         binding.rcUsuarios.layoutManager = llmanager
         binding.rcUsuarios.adapter = usuarioAdapter
@@ -55,6 +65,17 @@ class PuntajeActivity : AppCompatActivity() {
 //            recyclerView.adapter = usuarioAdapter
 //        }
     }
+
+//    private fun configGlide() {
+//        val url =
+//            "https://yt3.ggpht.com/ytc/AMLnZu9-hbX2bZLgbBKPQ9P1sSg9U0wL44dmcHLcSX5BvQ=s900-c-k-c0x00ffffff-no-rj"
+//        Glide.with(this)
+//            .load(url)
+//            .diskCacheStrategy(DiskCacheStrategy.ALL)
+//            .centerCrop()
+//            .circleCrop()
+//            .into(binding.)
+//    }
 
     private fun configSwipe() {
         binding.refreshLayout.setColorSchemeResources(R.color.teal_700, R.color.purple_200)
@@ -84,6 +105,29 @@ class PuntajeActivity : AppCompatActivity() {
         val connectivityManager =
             this.applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         return connectivityManager.activeNetworkInfo != null
+    }
+
+    private fun getUsuarios() {
+        doAsync {
+            val usuarios = UsuarioApplication.database.getUsuarioDao().getAllUsuariosByPuntaje()
+            uiThread {
+                usuarioAdapter.setUsuarios(usuarios as MutableList<UsuarioEntity>)
+            }
+        }
+    }
+
+    override fun onDeleteUsuario(usuarioEntity: UsuarioEntity, position: Int) {
+        AlertDialog.Builder(this)
+            .setTitle(this.resources.getString(R.string.titulo_eliminar))
+            .setMessage(this.resources.getString(R.string.msg_eliminar))
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                doAsync {
+                    UsuarioApplication.database.getUsuarioDao().delete(usuarioEntity)
+                    uiThread {
+                        usuarioAdapter.deleteUsuario(usuarioEntity)
+                    }
+                }
+            }.show()
     }
 
     // Configurar action bar
