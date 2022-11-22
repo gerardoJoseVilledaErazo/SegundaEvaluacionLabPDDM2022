@@ -38,7 +38,7 @@ class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
         // Configuracion de viewBinding
         binding = ActivityIniciarJuegoBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+//        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         // Habilitar action bar
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         // Titulo para la actividad
