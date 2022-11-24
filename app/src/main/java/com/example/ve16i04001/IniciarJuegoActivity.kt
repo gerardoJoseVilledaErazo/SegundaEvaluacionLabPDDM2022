@@ -27,10 +27,7 @@ class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
     private var numeroIntentos: Int = 0
     private var miRespuesta: Int = 0
     private var respuestaCorrecta: Int = 0
-
-    //    private lateinit var miRespuesta: Integer
-//    private lateinit var respuestaCorrecta: Integer
-    private lateinit var valor: String
+    private var intento: Int = 0
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,8 +43,9 @@ class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
 
         dificultad = intent.extras!!.getInt("dificultad")
         nickname = intent.extras!!.getString("nickname").toString()
+        intento = intent.extras!!.getInt("intentoInicial")
 
-//        respuestaCorrecta = Integer.parseInt(intent.extras!!.getInt("respuestaCorrecta").toString())
+
         respuestaCorrecta = intent.extras!!.getInt("respuestaCorrecta")
 
         binding.layoutIniciarJuego.txtAttempts.text = "Numero de intentos: $numeroIntentos"
@@ -121,29 +119,43 @@ class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
                         miRespuesta =
                             Integer.parseInt(binding.layoutIniciarJuego.edtFacil.text.toString())
                         if (miRespuesta == respuestaCorrecta) {
-                            doAsync {
-                                UsuarioApplication.database.getUsuarioDao().addUsuario(
-                                    UsuarioEntity(
-                                        nickname = nickname,
-                                        puntaje = numeroIntentos.toString(),
-                                        imagen = "https://cursokotlin.com/wp-content/uploads/2017/07/spiderman.jpg"
+
+                            if (intento == 0) {
+                                // primera vez
+                                doAsync {
+                                    UsuarioApplication.database.getUsuarioDao().addUsuario(
+                                        UsuarioEntity(
+                                            nickname = nickname,
+                                            puntaje = numeroIntentos.toString(),
+                                            imagen = "https://cursokotlin.com/wp-content/uploads/2017/07/spiderman.jpg"
+                                        )
                                     )
+                                    uiThread {
+                                        goToMainActivity()
+                                    }
+                                }
+                                /// Snackbar
+                                Snackbar.make(
+                                    binding.root, R.string.respuesta_correcta,
+                                    Snackbar.LENGTH_SHORT
+                                ).show()
+                                val intent = Intent(
+                                    this,
+                                    MainActivity::class.java
                                 )
-                                uiThread {
-                                    goToMainActivity()
+                                startActivity(intent)
+                                configProgressDialog()
+                            } else {
+                                // nickname ya registrado se actualizara puntaje
+
+                                doAsync {
+                                    UsuarioApplication.database.getUsuarioDao()
+                                        .update(nickname, numeroIntentos.toString())
+                                    uiThread {
+                                        goToMainActivity()
+                                    }
                                 }
                             }
-                            /// Snackbar
-                            Snackbar.make(
-                                binding.root, R.string.respuesta_correcta,
-                                Snackbar.LENGTH_SHORT
-                            ).show()
-                            val intent = Intent(
-                                this,
-                                MainActivity::class.java
-                            )
-                            startActivity(intent)
-                            configProgressDialog()
                         } else {
                             binding.layoutIniciarJuego.edtFacil.setText("")
                             if (miRespuesta < respuestaCorrecta) {
@@ -167,34 +179,47 @@ class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
                             "Numero de intentos: $numeroIntentos"
                     }
                 } else if (dificultad == 2) {
-//
+                    /// medio
                     if (verifyEmpty(binding.layoutIniciarJuego.edtMedio)) {
                         miRespuesta =
                             Integer.parseInt(binding.layoutIniciarJuego.edtMedio.text.toString())
                         if (miRespuesta == respuestaCorrecta) {
-                            doAsync {
-                                UsuarioApplication.database.getUsuarioDao().addUsuario(
-                                    UsuarioEntity(
-                                        nickname = nickname,
-                                        puntaje = numeroIntentos.toString(),
-                                        imagen = "https://cursokotlin.com/wp-content/uploads/2017/07/spiderman.jpg"
+                            if (intento == 0) {
+                                // primera vez
+                                doAsync {
+                                    UsuarioApplication.database.getUsuarioDao().addUsuario(
+                                        UsuarioEntity(
+                                            nickname = nickname,
+                                            puntaje = numeroIntentos.toString(),
+                                            imagen = "https://cursokotlin.com/wp-content/uploads/2017/07/spiderman.jpg"
+                                        )
                                     )
+                                    uiThread {
+                                        goToMainActivity()
+                                    }
+                                }
+                                /// Snackbar
+                                Snackbar.make(
+                                    binding.root, R.string.respuesta_correcta,
+                                    Snackbar.LENGTH_SHORT
+                                ).show()
+                                val intent = Intent(
+                                    this,
+                                    MainActivity::class.java
                                 )
-                                uiThread {
-                                    goToMainActivity()
+                                startActivity(intent)
+                                configProgressDialog()
+                            } else {
+                                // usuario ya ingresado se modificara puntaje
+
+                                doAsync {
+                                    UsuarioApplication.database.getUsuarioDao()
+                                        .update(nickname, numeroIntentos.toString())
+                                    uiThread {
+                                        goToMainActivity()
+                                    }
                                 }
                             }
-                            /// Snackbar
-                            Snackbar.make(
-                                binding.root, R.string.respuesta_correcta,
-                                Snackbar.LENGTH_SHORT
-                            ).show()
-                            val intent = Intent(
-                                this,
-                                MainActivity::class.java
-                            )
-                            startActivity(intent)
-                            configProgressDialog()
                         } else {
                             binding.layoutIniciarJuego.edtMedio.setText("")
                             if (miRespuesta < respuestaCorrecta) {
@@ -218,34 +243,47 @@ class IniciarJuegoActivity : AppCompatActivity(), View.OnClickListener {
                             "Numero de intentos: $numeroIntentos"
                     }
                 } else if (dificultad == 3) {
-//
+                    /// dificil
                     if (verifyEmpty(binding.layoutIniciarJuego.edtDificil)) {
                         miRespuesta =
                             Integer.parseInt(binding.layoutIniciarJuego.edtDificil.text.toString())
                         if (miRespuesta == respuestaCorrecta) {
-                            doAsync {
-                                UsuarioApplication.database.getUsuarioDao().addUsuario(
-                                    UsuarioEntity(
-                                        nickname = nickname,
-                                        puntaje = numeroIntentos.toString(),
-                                        imagen = "https://cursokotlin.com/wp-content/uploads/2017/07/spiderman.jpg"
+                            if (intento == 0) {
+                                // primera vez
+                                doAsync {
+                                    UsuarioApplication.database.getUsuarioDao().addUsuario(
+                                        UsuarioEntity(
+                                            nickname = nickname,
+                                            puntaje = numeroIntentos.toString(),
+                                            imagen = "https://cursokotlin.com/wp-content/uploads/2017/07/spiderman.jpg"
+                                        )
                                     )
+                                    uiThread {
+                                        goToMainActivity()
+                                    }
+                                }
+                                /// Snackbar
+                                Snackbar.make(
+                                    binding.root, R.string.respuesta_correcta,
+                                    Snackbar.LENGTH_SHORT
+                                ).show()
+                                val intent = Intent(
+                                    this,
+                                    MainActivity::class.java
                                 )
-                                uiThread {
-                                    goToMainActivity()
+                                startActivity(intent)
+                                configProgressDialog()
+                            } else {
+                                // nickname ya ingresado se actualizara puntaje
+
+                                doAsync {
+                                    UsuarioApplication.database.getUsuarioDao()
+                                        .update(nickname, numeroIntentos.toString())
+                                    uiThread {
+                                        goToMainActivity()
+                                    }
                                 }
                             }
-                            /// Snackbar
-                            Snackbar.make(
-                                binding.root, R.string.respuesta_correcta,
-                                Snackbar.LENGTH_SHORT
-                            ).show()
-                            val intent = Intent(
-                                this,
-                                MainActivity::class.java
-                            )
-                            startActivity(intent)
-                            configProgressDialog()
                         } else {
                             binding.layoutIniciarJuego.edtDificil.setText("")
                             if (miRespuesta < respuestaCorrecta) {

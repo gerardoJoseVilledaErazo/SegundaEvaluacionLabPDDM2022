@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     var nMedio = 100 //  n es el número hasta que quieres que llegue (1-100)
     var nDificil = 150 //  n es el número hasta que quieres que llegue (1-150)
     private var respuestaCorrecta: Int = 0
+    var intentoI: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,6 +87,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 dificultad = intent.extras!!.getInt("dificultad")
                 nickname = intent.extras!!.getString("nickname").toString()
+                intentoI = intent.extras!!.getInt("intentoInicial")
                 if (dificultad == 0) {
                     /// Snackbar
                     Snackbar.make(
@@ -105,6 +107,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         intent.putExtra("dificultad", dificultad)
                         intent.putExtra("nickname", nickname)
                         intent.putExtra("respuestaCorrecta", respuestaCorrecta)
+                        intent.putExtra("intentoInicial", intentoI)
                         startActivity(intent)
                         configProgressDialog()
                     } else if (dificultad == 2) {
@@ -118,6 +121,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         intent.putExtra("dificultad", dificultad)
                         intent.putExtra("nickname", nickname)
                         intent.putExtra("respuestaCorrecta", respuestaCorrecta)
+                        intent.putExtra("intentoInicial", intentoI)
                         startActivity(intent)
                         configProgressDialog()
                     } else if (dificultad == 3) {
@@ -131,6 +135,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         intent.putExtra("dificultad", dificultad)
                         intent.putExtra("nickname", nickname)
                         intent.putExtra("respuestaCorrecta", respuestaCorrecta)
+                        intent.putExtra("intentoInicial", intentoI)
                         startActivity(intent)
                         configProgressDialog()
                     }

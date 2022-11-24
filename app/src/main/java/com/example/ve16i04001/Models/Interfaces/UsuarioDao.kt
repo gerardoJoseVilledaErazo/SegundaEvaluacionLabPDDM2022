@@ -1,9 +1,6 @@
 package com.example.ve16i04001.Models.Interfaces
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.example.ve16i04001.Models.UsuarioEntity
 
 @Dao
@@ -23,4 +20,19 @@ interface UsuarioDao {
 
     @Delete
     fun delete(usuarioEntity: UsuarioEntity)
+
+    ///
+
+    @Query("SELECT * FROM UsuarioEntity WHERE nickname=:nickname")
+    fun login(nickname: String): Boolean
+
+    @Query("SELECT puntaje FROM UsuarioEntity WHERE nickname=:nickname")
+    fun valorPuntaje(nickname: String): Int
+
+
+    @Update
+    fun UpdateUser(entityUser: UsuarioEntity)
+
+    @Query("UPDATE UsuarioEntity SET puntaje=:puntaje WHERE nickname=:nickname")
+    fun update(nickname: String, puntaje: String)
 }

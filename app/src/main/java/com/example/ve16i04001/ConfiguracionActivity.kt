@@ -24,6 +24,8 @@ class ConfiguracionActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityConfiguracionBinding
     lateinit var nickName: String
 
+    var intentoInicial: Int = 0
+
     companion object {
         var isAllowed: Boolean = false
     }
@@ -76,7 +78,29 @@ class ConfiguracionActivity : AppCompatActivity(), View.OnClickListener {
         return true
     }
 
+    fun validar(): Int {
+        var checkId: Int = 0
+
+        if (binding.layoutRegistrar.rbtFacil.isChecked) {
+            if (verifyEmpty(binding.layoutRegistrar.edtNickname)) {
+                checkId = 1
+            }
+        } else if (binding.layoutRegistrar.rbtMedio.isChecked) {
+            if (verifyEmpty(binding.layoutRegistrar.edtNickname)) {
+                // Caso Medio
+                checkId = 2
+            }
+        } else {
+            if (verifyEmpty(binding.layoutRegistrar.edtNickname)) {
+                // Caso Dificil
+                checkId = 3
+            }
+        }
+        return checkId
+    }
+
     override fun onClick(p0: View?) {
+        var userNick = binding.layoutRegistrar.edtNickname.text.toString()
         when (p0!!.id) {
             binding.layoutRegistrar.btnSiguiente.id -> {
                 // Validar si se ha seleccionado uno de los radiobuttons
@@ -99,6 +123,7 @@ class ConfiguracionActivity : AppCompatActivity(), View.OnClickListener {
                             val nickname: String =
                                 binding.layoutRegistrar.edtNickname.text.toString()
                             intent.putExtra("nickname", nickname)
+                            intent.putExtra("intentoInicial", 0)
                             startActivity(intent)
                             configProgressDialog()
                         } else {
@@ -108,12 +133,13 @@ class ConfiguracionActivity : AppCompatActivity(), View.OnClickListener {
                                 Toast.LENGTH_SHORT
                             )
                                 .show()
-                            UsuarioApplication.database.getUsuarioDao()
-                                .deleteAnSpecificUsuario(nickName)
+//                            UsuarioApplication.database.getUsuarioDao()
+//                                .deleteAnSpecificUsuario(nickName)
                             intent.putExtra("dificultad", 1)/// 1 Facil
                             val nickname: String =
                                 binding.layoutRegistrar.edtNickname.text.toString()
                             intent.putExtra("nickname", nickname)
+                            intent.putExtra("intentoInicial", 1)
                             startActivity(intent)
                             configProgressDialog()
                         }
@@ -132,10 +158,11 @@ class ConfiguracionActivity : AppCompatActivity(), View.OnClickListener {
                             MainActivity::class.java
                         )
                         if (isAllowed) {
-                            intent.putExtra("dificultad", 1)/// 1 Facil
+                            intent.putExtra("dificultad", 2)/// 2 medio
                             val nickname: String =
                                 binding.layoutRegistrar.edtNickname.text.toString()
                             intent.putExtra("nickname", nickname)
+                            intent.putExtra("intentoInicial", 0)
                             startActivity(intent)
                             configProgressDialog()
                         } else {
@@ -145,12 +172,13 @@ class ConfiguracionActivity : AppCompatActivity(), View.OnClickListener {
                                 Toast.LENGTH_SHORT
                             )
                                 .show()
-                            UsuarioApplication.database.getUsuarioDao()
-                                .deleteAnSpecificUsuario(nickName)
+//                            UsuarioApplication.database.getUsuarioDao()
+//                                .deleteAnSpecificUsuario(nickName)
                             intent.putExtra("dificultad", 2)/// 2 Medio
                             val nickname: String =
                                 binding.layoutRegistrar.edtNickname.text.toString()
                             intent.putExtra("nickname", nickname)
+                            intent.putExtra("intentoInicial", 1)
                             startActivity(intent)
                             configProgressDialog()
                         }
@@ -174,10 +202,11 @@ class ConfiguracionActivity : AppCompatActivity(), View.OnClickListener {
                             MainActivity::class.java
                         )
                         if (isAllowed) {
-                            intent.putExtra("dificultad", 1)/// 1 Facil
+                            intent.putExtra("dificultad", 3)/// 3 dificil
                             val nickname: String =
                                 binding.layoutRegistrar.edtNickname.text.toString()
                             intent.putExtra("nickname", nickname)
+                            intent.putExtra("intentoInicial", 0)
                             startActivity(intent)
                             configProgressDialog()
                         } else {
@@ -187,12 +216,13 @@ class ConfiguracionActivity : AppCompatActivity(), View.OnClickListener {
                                 Toast.LENGTH_SHORT
                             )
                                 .show()
-                            UsuarioApplication.database.getUsuarioDao()
-                                .deleteAnSpecificUsuario(nickName)
+//                            UsuarioApplication.database.getUsuarioDao()
+//                                .deleteAnSpecificUsuario(nickName)
                             intent.putExtra("dificultad", 3)/// 3 Dificil
                             val nickname: String =
                                 binding.layoutRegistrar.edtNickname.text.toString()
                             intent.putExtra("nickname", nickname)
+                            intent.putExtra("intentoInicial", 1)
                             startActivity(intent)
                             configProgressDialog()
                         }
