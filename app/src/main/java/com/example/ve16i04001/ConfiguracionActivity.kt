@@ -44,7 +44,7 @@ class ConfiguracionActivity : AppCompatActivity(), View.OnClickListener {
             nickName = it.toString()
             if (/*true*/ UsuarioApplication.database.getUsuarioDao().is_taken(nickName)) {
                 isAllowed = false
-                Toast.makeText(applicationContext, "Already Taken", Toast.LENGTH_SHORT)
+                Toast.makeText(applicationContext, "Ya existe este usuario!!!", Toast.LENGTH_SHORT)
                     .show()
             } else {
                 isAllowed = true
@@ -102,7 +102,11 @@ class ConfiguracionActivity : AppCompatActivity(), View.OnClickListener {
                             startActivity(intent)
                             configProgressDialog()
                         } else {
-                            Toast.makeText(this, "Nickname Already Taken", Toast.LENGTH_SHORT)
+                            Toast.makeText(
+                                this,
+                                "El puntaje de este Nickname se actualizará!!!",
+                                Toast.LENGTH_SHORT
+                            )
                                 .show()
                             UsuarioApplication.database.getUsuarioDao()
                                 .deleteAnSpecificUsuario(nickName)
@@ -127,11 +131,39 @@ class ConfiguracionActivity : AppCompatActivity(), View.OnClickListener {
 //                            IniciarJuegoActivity::class.java
                             MainActivity::class.java
                         )
-                        intent.putExtra("dificultad", 2)/// 2 Medio
-                        val nickname: String = binding.layoutRegistrar.edtNickname.text.toString()
-                        intent.putExtra("nickname", nickname)
-                        startActivity(intent)
-                        configProgressDialog()
+                        if (isAllowed) {
+                            intent.putExtra("dificultad", 1)/// 1 Facil
+                            val nickname: String =
+                                binding.layoutRegistrar.edtNickname.text.toString()
+                            intent.putExtra("nickname", nickname)
+                            startActivity(intent)
+                            configProgressDialog()
+                        } else {
+                            Toast.makeText(
+                                this,
+                                "El puntaje de este Nickname se actualizará!!!",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+                            UsuarioApplication.database.getUsuarioDao()
+                                .deleteAnSpecificUsuario(nickName)
+                            intent.putExtra("dificultad", 2)/// 2 Medio
+                            val nickname: String =
+                                binding.layoutRegistrar.edtNickname.text.toString()
+                            intent.putExtra("nickname", nickname)
+                            startActivity(intent)
+                            configProgressDialog()
+                        }
+//                        val intent = Intent(
+//                            this,
+////                            IniciarJuegoActivity::class.java
+//                            MainActivity::class.java
+//                        )
+//                        intent.putExtra("dificultad", 2)/// 2 Medio
+//                        val nickname: String = binding.layoutRegistrar.edtNickname.text.toString()
+//                        intent.putExtra("nickname", nickname)
+//                        startActivity(intent)
+//                        configProgressDialog()
                     }
                 } else {
                     if (verifyEmpty(binding.layoutRegistrar.edtNickname)) {
@@ -141,11 +173,39 @@ class ConfiguracionActivity : AppCompatActivity(), View.OnClickListener {
 //                            IniciarJuegoActivity::class.java
                             MainActivity::class.java
                         )
-                        intent.putExtra("dificultad", 3)/// 3 Dificil
-                        val nickname: String = binding.layoutRegistrar.edtNickname.text.toString()
-                        intent.putExtra("nickname", nickname)
-                        startActivity(intent)
-                        configProgressDialog()
+                        if (isAllowed) {
+                            intent.putExtra("dificultad", 1)/// 1 Facil
+                            val nickname: String =
+                                binding.layoutRegistrar.edtNickname.text.toString()
+                            intent.putExtra("nickname", nickname)
+                            startActivity(intent)
+                            configProgressDialog()
+                        } else {
+                            Toast.makeText(
+                                this,
+                                "El puntaje de este Nickname se actualizará!!!",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+                            UsuarioApplication.database.getUsuarioDao()
+                                .deleteAnSpecificUsuario(nickName)
+                            intent.putExtra("dificultad", 3)/// 3 Dificil
+                            val nickname: String =
+                                binding.layoutRegistrar.edtNickname.text.toString()
+                            intent.putExtra("nickname", nickname)
+                            startActivity(intent)
+                            configProgressDialog()
+                        }
+//                        val intent = Intent(
+//                            this,
+////                            IniciarJuegoActivity::class.java
+//                            MainActivity::class.java
+//                        )
+//                        intent.putExtra("dificultad", 3)/// 3 Dificil
+//                        val nickname: String = binding.layoutRegistrar.edtNickname.text.toString()
+//                        intent.putExtra("nickname", nickname)
+//                        startActivity(intent)
+//                        configProgressDialog()
                     }
                 }
             }
