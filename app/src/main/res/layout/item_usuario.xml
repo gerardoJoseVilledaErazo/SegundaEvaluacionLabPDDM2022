@@ -20,6 +20,19 @@
             tools:background="@color/black" />
 
         <TextView
+            android:id="@+id/textViewNickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="126dp"
+            android:text="Nickname:"
+            app:layout_constraintEnd_toStartOf="@+id/tvNickame"
+            app:layout_constraintStart_toEndOf="@+id/ivUsuario"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
             android:id="@+id/tvNickame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,8 +41,18 @@
             android:textSize="21sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivUsuario"
+            app:layout_constraintStart_toEndOf="@id/textViewNickname"
             app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/textViewPuntaje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Puntaje:"
+            app:layout_constraintEnd_toStartOf="@+id/tvPuntaje"
+            app:layout_constraintStart_toEndOf="@+id/ivUsuario"
+            app:layout_constraintTop_toBottomOf="@id/tvNickame" />
 
         <TextView
             android:id="@+id/tvPuntaje"
@@ -39,7 +62,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivUsuario"
+            app:layout_constraintStart_toEndOf="@id/textViewPuntaje"
             app:layout_constraintTop_toBottomOf="@+id/tvNickame" />
 
         <!--        <TextView-->
