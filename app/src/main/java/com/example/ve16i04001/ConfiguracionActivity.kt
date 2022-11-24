@@ -6,17 +6,23 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.text.Editable
 import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.widget.addTextChangedListener
 import com.example.ve16i04001.databinding.ActivityConfiguracionBinding
 import com.google.android.material.snackbar.Snackbar
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 
 class ConfiguracionActivity : AppCompatActivity(), View.OnClickListener {
 
     // Variable para manejar el viewBinding
     private lateinit var binding: ActivityConfiguracionBinding
+    lateinit var nickName: String
 
     companion object {
         var isAllowed: Boolean = false
@@ -32,6 +38,18 @@ class ConfiguracionActivity : AppCompatActivity(), View.OnClickListener {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         // Se configura el nombre de la actividad
         title = "Configuracion"
+
+        binding.layoutRegistrar.edtNickname.addTextChangedListener { it: Editable? ->
+//            val nickName: String = it.toString()
+            nickName = it.toString()
+            if (/*true*/ UsuarioApplication.database.getUsuarioDao().is_taken(nickName)) {
+                isAllowed = false
+                Toast.makeText(applicationContext, "Already Taken", Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+                isAllowed = true
+            }
+        }
 
 
         // Configuracion del evento click en los botones
@@ -76,11 +94,30 @@ class ConfiguracionActivity : AppCompatActivity(), View.OnClickListener {
 //                            IniciarJuegoActivity::class.java
                             MainActivity::class.java
                         )
-                        intent.putExtra("dificultad", 1)/// 1 Facil
-                        val nickname: String = binding.layoutRegistrar.edtNickname.text.toString()
-                        intent.putExtra("nickname", nickname)
-                        startActivity(intent)
-                        configProgressDialog()
+                        if (isAllowed) {
+                            intent.putExtra("dificultad", 1)/// 1 Facil
+                            val nickname: String =
+                                binding.layoutRegistrar.edtNickname.text.toString()
+                            intent.putExtra("nickname", nickname)
+                            startActivity(intent)
+                            configProgressDialog()
+                        } else {
+                            Toast.makeText(this, "Nickname Already Taken", Toast.LENGTH_SHORT)
+                                .show()
+                            UsuarioApplication.database.getUsuarioDao()
+                                .deleteAnSpecificUsuario(nickName)
+                            intent.putExtra("dificultad", 1)/// 1 Facil
+                            val nickname: String =
+                                binding.layoutRegistrar.edtNickname.text.toString()
+                            intent.putExtra("nickname", nickname)
+                            startActivity(intent)
+                            configProgressDialog()
+                        }
+//                        intent.putExtra("dificultad", 1)/// 1 Facil
+//                        val nickname: String = binding.layoutRegistrar.edtNickname.text.toString()
+//                        intent.putExtra("nickname", nickname)
+//                        startActivity(intent)
+//                        configProgressDialog()
                     }
                 } else if (binding.layoutRegistrar.rbtMedio.isChecked) {
                     if (verifyEmpty(binding.layoutRegistrar.edtNickname)) {

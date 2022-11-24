@@ -15,8 +15,11 @@ interface UsuarioDao {
     @Query("SELECT * FROM UsuarioEntity ORDER BY puntaje ASC LIMIT 3")
     fun getAllUsuariosByPuntaje(): List<UsuarioEntity>
 
-    @Query("DELETE FROM UsuarioEntity")
-    fun deleteAllUsuarios()
+    @Query("SELECT EXISTS (SELECT * FROM UsuarioEntity WHERE nickname=:nickname)")
+    fun is_taken(nickname: String): Boolean
+
+    @Query("DELETE FROM UsuarioEntity WHERE nickname=:nickname")
+    fun deleteAnSpecificUsuario(nickname: String)
 
     @Delete
     fun delete(usuarioEntity: UsuarioEntity)
