@@ -18,9 +18,9 @@ class ConfiguracionActivity : AppCompatActivity(), View.OnClickListener {
     // Variable para manejar el viewBinding
     private lateinit var binding: ActivityConfiguracionBinding
 
-//    companion object {
-//        var isAllowed: Boolean = false
-//    }
+    companion object {
+        var isAllowed: Boolean = false
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
