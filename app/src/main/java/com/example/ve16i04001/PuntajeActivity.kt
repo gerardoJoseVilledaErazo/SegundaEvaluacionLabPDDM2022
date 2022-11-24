@@ -40,7 +40,7 @@ class PuntajeActivity : AppCompatActivity(), IOnClickListener {
         // Habilitar action bar
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         // Titulo para la actividad
-        title = "Puntaje"
+        title = "Puntajes Altos"
         // Configurar SwipeRefreshLayout
         configSwipe()
         // Configurar RecyclerView
