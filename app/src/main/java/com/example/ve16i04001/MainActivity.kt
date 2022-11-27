@@ -1,5 +1,6 @@
 package com.example.ve16i04001
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ve16i04001.UsuarioApplication.Companion.prefs
 import com.example.ve16i04001.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -85,15 +87,31 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 //                startActivity(intent)
 //                configProgressDialog()
 
-                dificultad = intent.extras!!.getInt("dificultad")
-                nickname = intent.extras!!.getString("nickname").toString()
-                intentoI = intent.extras!!.getInt("intentoInicial")
-                if (dificultad == 0) {
+//                dificultad = intent.extras!!.getInt("dificultad")
+//                nickname = intent.extras!!.getString("nickname").toString()
+//                intentoI = intent.extras!!.getInt("intentoInicial")
+
+                dificultad = prefs.getDificultad()
+                nickname = prefs.getName()
+                intentoI = prefs.getIntento()
+
+                if (/*dificultad == 0*/!prefs.getName().isNotEmpty()) {
+                    // alert dialog
+                    AlertDialog.Builder(this)
+
+                        .setTitle(this.resources.getString(R.string.titulo_nickname))
+
+                        .setMessage(this.resources.getString(R.string.registre_su_nickname_primero_en_configuraciones))
+                        .setPositiveButton(android.R.string.ok,
+                            DialogInterface.OnClickListener
+                            { dialogInterface, i ->
+                                finish()
+                            }).show()
                     /// Snackbar
-                    Snackbar.make(
-                        binding.root, R.string.registre_su_nickname_primero_en_configuraciones,
-                        Snackbar.LENGTH_SHORT
-                    ).show()
+//                    Snackbar.make(
+//                        binding.root, R.string.registre_su_nickname_primero_en_configuraciones,
+//                        Snackbar.LENGTH_SHORT
+//                    ).show()
                 } else {
 
                     if (dificultad == 1) {

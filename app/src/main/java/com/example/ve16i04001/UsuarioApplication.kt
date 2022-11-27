@@ -8,10 +8,12 @@ class UsuarioApplication : Application() {
 
     companion object {
         lateinit var database: UsuarioDatabase
+        lateinit var prefs: Prefs
     }
 
     override fun onCreate() {
         super.onCreate()
+        prefs = Prefs(applicationContext)
         database = Room.databaseBuilder(
             this,
             UsuarioDatabase::class.java,

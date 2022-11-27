@@ -33,5 +33,7 @@
     <string name="msg_eliminar">Realmente desea eliminar?</string>
     <string name="ve16_i04_001_pf19_i04_001">VE16-I04-001, PF19-I04-001</string>
     <string name="gerardo_villeda_maritza_perez">Gerardo Villeda, Maritza Perez</string>
+    <string name="titulo_nickname">Aviso! Registrese Primero</string>
+    <string name="titulo_felicidades">Felicidades!!!</string>
 
 </resources>
